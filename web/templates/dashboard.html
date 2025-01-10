@@ -1,1 +1,71 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VRP Strategy Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="header">
+            <h1>VRP Trading Strategy Dashboard</h1>
+            <div class="controls">
+                <select id="timeframe-selector">
+                    <option value="1d">1 Day</option>
+                    <option value="1w">1 Week</option>
+                    <option value="1m">1 Month</option>
+                    <option value="3m">3 Months</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="chart-container">
+                <canvas id="performance-chart"></canvas>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h3>Total Return</h3>
+                    <p id="total-return">Loading...</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Sharpe Ratio</h3>
+                    <p id="sharpe-ratio">Loading...</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Max Drawdown</h3>
+                    <p id="max-drawdown">Loading...</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Win Rate</h3>
+                    <p id="win-rate">Loading...</p>
+                </div>
+            </div>
+            
+            <div class="positions-table">
+                <h2>Current Positions</h2>
+                <table id="positions-table">
+                    <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Type</th>
+                            <th>Strike</th>
+                            <th>Expiry</th>
+                            <th>P&L</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Positions will be populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.socket.io/socket.io-3.0.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
